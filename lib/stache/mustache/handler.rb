@@ -26,7 +26,7 @@ module Stache
         virtual_path      = template.virtual_path.to_s
 
         # Caching key
-        template_id = "#{template.identifier.to_s}#{template.updated_at.to_i}"
+        template_id = "#{template.identifier.to_s}"
 
         # Return a string that will be eval'd in the context of the ActionView, ugly, but it works.
         <<-MUSTACHE
@@ -82,7 +82,7 @@ module Stache
       end
 
       # In Rails 3.1+, #call takes the place of #compile
-      def self.call(template)
+      def self.call(template, content)
         new.compile(template)
       end
 
